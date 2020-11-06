@@ -1,0 +1,14 @@
+overwrite: true
+schema: 'http://localhost:3000/api/graphql'
+documents: './lib/apollo/graphql/*/*.ts'
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+      - 'typescript-react-apollo'
+      - 'fragment-matcher'
+      - 'typescript-operations'
+    config:
+      withHooks: true
+      useIndexSignature: true
