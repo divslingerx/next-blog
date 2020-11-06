@@ -2,13 +2,14 @@ import * as React from 'react'
 import SidebarNav from './SidebarNav'
 import { useTrueFalse, useIsAuthenticated } from '../../hooks'
 import AdminHeader from './AdminHeader'
-import useSignOut from '../../hooks/useSignOut'
 import { Spinner, Container } from '../common'
 
 const Layout: React.FC = ({ children }) => {
   const { hasAuth, user } = useIsAuthenticated()
   const [sidebarIsOpen, openSidebar, closeSidebar] = useTrueFalse(false)
-  const signOut = useSignOut()
+  const signOut = () => {
+    return null
+  }
 
   if (hasAuth) {
     return (
