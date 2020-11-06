@@ -32,8 +32,7 @@ const postResolvers: PostResolvers = {
         return new AuthenticationError('You must be signed in')
       }
 
-      const res = await uploadSingle(args.post.featuredImage)
-
+      const res: { url?: string } = await uploadSingle(args.post.featuredImage)
       const { title, subtitle, status, body, category } = args.post
 
       if (userId) {
