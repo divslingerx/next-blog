@@ -37,6 +37,10 @@ const PostCard: React.FC<{ post: Post }> = ({ post }) => {
 
 const HomePage: React.FC = () => {
   const { data, error, loading } = useAllPostsQuery()
+
+  React.useEffect(() => {
+    console.table({ data, error })
+  }, [data, error])
   return (
     <div>
       <Header />
@@ -45,7 +49,7 @@ const HomePage: React.FC = () => {
           <p>Sorry, something went wrong while trying to load the posts</p>
         )}
         {!loading &&
-          data.AllPosts.map((post) => (
+          data.AllPosts?.map((post) => (
             <PostCard key={post.id} post={post as Post} />
           ))}
       </div>
