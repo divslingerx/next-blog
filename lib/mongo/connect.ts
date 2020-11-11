@@ -6,9 +6,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 const connect = async () => {
   await mongoose
     .connect(process.env.MONGO_URI, {
+      bufferCommands: false, // Disable mongoose buffering
+      bufferMaxEntries: 0, // and MongoDB driver buffering
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     })
     .then(() => console.log(`Mongo running at ${process.env.MONGO_URI}`))
     .catch((err) => console.log(err))
@@ -25,6 +28,7 @@ const connectDB = (handler: any) => async (
 }
 
 const db = mongoose.connection
+
 db.once('ready', () =>
   console.log(`connected to mongo on ${process.env.MONGO_URI}`)
 )
