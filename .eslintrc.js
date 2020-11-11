@@ -30,7 +30,12 @@ module.exports = {
     'import/extensions': 0,
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'no-use-before-define': [0],
     '@typescript-eslint/no-use-before-define': [1],
     'jsx-a11y/anchor-is-valid': [
@@ -42,6 +47,7 @@ module.exports = {
       },
     ],
   },
+
   settings: {
     'import/resolver': {
       node: {
